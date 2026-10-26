@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail } from "lucide-react";
-import logo from "../assets/logo/haswaniLogo.png";
+import logo from "../assets/logo/HaswaniLogo.png";
 
 export default function Footer() {
   const quickLinks = [
