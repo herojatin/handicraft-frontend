@@ -48,12 +48,12 @@ const ExclusiveProducts = () => {
     <div className="min-h-screen bg-[#f8f8f8]">
       <div className="max-w-7xl mx-auto px-6 py-10">
         <h1 className="text-4xl font-bold text-center mb-10">
-          Exclusive Products
+          Catalogue Products
         </h1>
 
         {products.length === 0 ? (
           <div className="text-center text-gray-500 text-lg">
-            No Exclusive Products Available
+            No Catalogue Products Available
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">

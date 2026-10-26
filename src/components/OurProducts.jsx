@@ -61,14 +61,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* RIGHT SIDE (Centered Image) */}
-        <div className="w-1/2 h-full flex items-center justify-center bg-[#f5f5f5]">
-          <img
-            src={productRight}
-            alt="product"
-            className="h-[85%] object-contain"
-          />
-        </div>
+   {/* RIGHT SIDE - Responsive Full Cover Image */}
+<div className="relative w-full md:w-1/2 h-[350px] md:h-full overflow-hidden">
+  <img
+    src={productRight}
+    alt="Haswani Handicrafts Product"
+    className="absolute inset-0 w-full h-full object-cover object-center"
+  />
+</div>
       </section>
     </>
   );
