@@ -138,27 +138,27 @@ const getImageUrl = (image) => {
         image.path ??
         image.src ??
         image.filename ??
+        image.key ??
         "";
 
   if (!path || typeof path !== "string") {
     return "";
   }
 
-  // S3 signed URLs and public URLs
-  if (/^(https?:\/\/|data:|blob:)/i.test(path)) {
-    return path;
+  const cleanPath = path.trim().replace(/\\/g, "/");
+
+  // Complete S3 signed URL or public URL
+  if (/^(https?:\/\/|data:|blob:)/i.test(cleanPath)) {
+    return cleanPath;
   }
 
-  const cleanPath = path
-    .replace(/\\/g, "/")
-    .replace(/^\/+/, "");
-
-  // An S3 object key is not a directly accessible URL.
+  // S3 object key: requires backend URL resolution.
+  // Do not assume /uploads/ can serve this key.
   if (/^products\//i.test(cleanPath)) {
     return "";
   }
 
-  return `${API_BASE}/${cleanPath}`;
+  return `${API_BASE}/${cleanPath.replace(/^\/+/, "")}`;
 };
 
 const getProductImage = (product) => {

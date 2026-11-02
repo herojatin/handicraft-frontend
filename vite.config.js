@@ -5,12 +5,23 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),
-     tailwindcss(),
+   plugins: [
+    react(),
+    tailwindcss(),
   ],
-  server: {
+
+     server: {
     allowedHosts: [
-      'inconsequentially-subsistent-florencio.ngrok-free.dev'
-    ]
-  }
-})
+      "inconsequentially-subsistent-florencio.ngrok-free.dev",
+    ],
+  },
+
+  // Remove console messages in production
+  esbuild: {
+    drop: ["console", "debugger"],
+  },
+
+  build: {
+    minify: "esbuild",
+  },
+});

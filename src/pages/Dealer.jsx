@@ -114,31 +114,50 @@ export default function DealerAuth() {
 
   // ---------------- LOGIN SUBMIT ----------------
 
-  const handleLoginSubmit = async (e) => {
+ 
+const handleLoginSubmit = async (e) => {
   e.preventDefault();
 
   try {
     const response = await axios.post(
       `${BASE_URL}/api/dealers/login`,
-      loginData
+      {
+        email: loginData.email.trim().toLowerCase(),
+        password: loginData.password,
+      }
     );
 
-    // Save token
-    localStorage.setItem("dealerToken", response.data.token);
+    const data = response.data;
+
+    if (!data.success || !data.token) {
+      alert(data.message || "Login failed");
+      return;
+    }
+
+    // Save dealer authentication
+    localStorage.setItem("dealerToken", data.token);
 
     // Save dealer information
-    localStorage.setItem(
-      "dealer",
-      JSON.stringify(response.data.dealer)
-    );
+    if (data.dealer) {
+      localStorage.setItem(
+        "dealer",
+        JSON.stringify(data.dealer)
+      );
+    }
 
-    // Redirect to Dealer Home
-    navigate("/dealer");
+    // Redirect after successful login
+    navigate("/dealer", { replace: true });
 
   } catch (error) {
-    alert(error.response?.data?.message || "Login failed");
+    console.error("DEALER LOGIN ERROR:", error);
+
+    alert(
+      error.response?.data?.message ||
+      "Unable to login. Please try again."
+    );
   }
 };
+
 
   // ---------------- REGISTER SUBMIT ----------------
 
