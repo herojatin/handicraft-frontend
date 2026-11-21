@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import slide1 from "../assets/hero/slide1.jpg";
 import slide2 from "../assets/hero/slide2.jpg";
@@ -6,6 +7,7 @@ import OurProducts from "../components/OurProducts";
 import Inspirations from "../components/Inspirations";
 import SocialSection from "../components/SocialSection";
 import Footer from "../components/Footer";
+
 
 export default function Home() {
   const slides = [slide1, slide2, slide3];
@@ -62,11 +64,14 @@ export default function Home() {
     </p>
 
     {/* CTA */}
-    <button className="border border-white px-7 py-2.5 sm:px-9 sm:py-3 md:px-12 md:py-3 
-                       tracking-[0.2em] text-[11px] sm:text-xs font-medium
-                       hover:bg-white hover:text-black transition duration-300">
-      FACTORY TOUR
-    </button>
+<Link
+  to="/factory-tour"
+  className="inline-block border border-white px-7 py-2.5 sm:px-9 sm:py-3 md:px-12 md:py-3
+  tracking-[0.2em] text-[11px] sm:text-xs font-medium
+  hover:bg-white hover:text-black transition duration-300"
+>
+  FACTORY TOUR
+</Link>
   </div>
 
   {/* DOTS */}

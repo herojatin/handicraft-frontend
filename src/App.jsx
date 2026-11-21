@@ -20,6 +20,7 @@ import FairandEvents from "./pages/FairandEvents";
 import ProductTour from "./pages/ProductTour";
 import Testimonials from "./pages/Testimonials";
 import ProductDetail from "./pages/ProductDetail";
+import FactoryTour from "./pages/FactoryTour";
 
 // Admin Pages
 import AdminDashboard from "./pages/AdminDashboard";
@@ -98,6 +99,8 @@ export default function App() {
           path="/product/:id"
           element={<ProductDetail />}
         />
+
+        <Route path="/factory-tour" element={<FactoryTour />} />
 
         {/* ==================================
             PROTECTED DEALER ROUTES
