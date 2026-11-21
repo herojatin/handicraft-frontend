@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 // product section images
 import productLeft from "../assets/products/left.jpg";
-import productRight from "../assets/products/right.jpg";
+import productRight from "../assets/products/right.JPG";
 
 export default function Home() {
   const slides = [slide1, slide2, slide3];
