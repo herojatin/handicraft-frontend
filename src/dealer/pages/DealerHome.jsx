@@ -292,6 +292,20 @@ const DealerHome = () => {
     setLoadMoreError("");
     setReloadKey((key) => key + 1);
   };
+  // =====================================================
+// FULL PRODUCT DETAIL PAGE
+// Replaces the listing without changing the URL
+// =====================================================
+
+if (detailProduct) {
+  return (
+    <ProductDetailModal
+      product={detailProduct}
+      onClose={() => setDetailProduct(null)}
+      onAddToCart={handleAddToCart}
+    />
+  );
+}
 
   return (
     <div className="min-h-screen bg-[#f8f8f8]">
@@ -509,14 +523,9 @@ const DealerHome = () => {
         />
       )}
 
-      {/* Product Detail Modal */}
-      {detailProduct && (
-        <ProductDetailModal
-          product={detailProduct}
-          onClose={() => setDetailProduct(null)}
-          onAddToCart={handleAddToCart}
-        />
-      )}
+      
+        
+      
 
     </div>
   );

@@ -99,7 +99,7 @@ const handleSendQuestion = async () => {
           product.productCode || "",
 
         productName:
-          product.name || "",
+       product.description?.trim() || product.productCode || "",
 
         productImage,
 
@@ -279,15 +279,15 @@ const handleSendQuestion = async () => {
 
           {/* RIGHT: PRODUCT DETAILS */}
           <div>
-            <h1 className="text-3xl lg:text-4xl font-bold mb-5 pr-12">
-              {product.productCode || "Product"}
+            <h1 className="text-3xl lg:text-4xl font-bold mb-4 pr-12">
+            {product.description?.trim() || product.productCode || "Product"}
             </h1>
 
-            {product.description && (
-              <p className="text-gray-600 mb-7 whitespace-pre-line leading-relaxed">
-                {product.description}
-              </p>
-            )}
+            <p className="text-sm text-gray-500 mb-5">
+              Product Code: {product.productCode || "N/A"}
+            </p>
+
+            
 
             {/* PRODUCT INFORMATION */}
             <div className="space-y-3 text-lg border-b pb-6">

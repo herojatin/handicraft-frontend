@@ -168,6 +168,7 @@ const ProductCard = ({
   const productCode = displayValue(
     product?.productCode ?? product?.code ?? "N/A"
   );
+  const description = displayValue(product?.description);
 
   const category = displayValue(product?.category);
 
@@ -249,59 +250,50 @@ const ProductCard = ({
           PRODUCT DETAILS
       ====================================== */}
 
-      <div className="p-5">
-        {/* PRODUCT CODE */}
+      
+  <div className="p-5">
+  {/* PRODUCT DESCRIPTION */}
 
-        <h2 className="text-lg font-semibold text-gray-800 line-clamp-2 break-words">
-          {productCode}
-        </h2>
+  <h2 className="text-lg font-semibold text-gray-800 line-clamp-2 break-words">
+    {description || productCode}
+  </h2>
 
-        <p className="text-sm text-gray-500 mt-1 break-words">
-          Product Code: {productCode}
-        </p>
+  {/* PRODUCT CODE */}
 
-        {/* CATEGORY */}
+  <p className="text-sm text-gray-500 mt-1 break-words">
+    Product Code: {productCode}
+  </p>
 
-        {category && (
-          <p className="text-sm text-gray-500 mt-1 break-words">
-            Category: {category}
-          </p>
-        )}
+  {/* CATEGORY */}
 
-        {/* SUBCATEGORY */}
+  {category && (
+    <p className="text-sm text-gray-500 mt-1 break-words">
+      Category: {category}
+    </p>
+  )}
 
-        {subCategory && (
-          <p className="text-sm text-gray-500 mt-1 break-words">
-            Sub Category: {subCategory}
-          </p>
-        )}
+  {/* SUBCATEGORY */}
 
-        {/* ======================================
-            ADD TO CART BUTTON
-        ====================================== */}
+  {subCategory && (
+    <p className="text-sm text-gray-500 mt-1 break-words">
+      Sub Category: {subCategory}
+    </p>
+  )}
 
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onAddToCart?.(product);
-          }}
-          className="
-            w-full
-            mt-4
-            bg-[#5a3e2b]
-            text-white
-            py-2.5
-            rounded-lg
-            font-semibold
-            hover:bg-[#452f21]
-            transition
-            cursor-pointer
-          "
-        >
-          Add to Cart
-        </button>
-      </div>
+  {/* ADD TO CART */}
+
+  <button
+    type="button"
+    onClick={(e) => {
+      e.stopPropagation();
+      onAddToCart?.(product);
+    }}
+    className="w-full mt-4 bg-[#5a3e2b] text-white py-2.5 rounded-lg font-semibold hover:bg-[#452f21] transition cursor-pointer"
+  >
+    Add to Cart
+  </button>
+</div>
+
     </div>
   );
 };
